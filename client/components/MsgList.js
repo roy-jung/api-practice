@@ -14,6 +14,8 @@ const originalMsgs = Array(50)
     text: `${50 - i} mock text`,
   }))
 
+console.log(JSON.stringify(originalMsgs))
+
 const MsgList = () => {
   const [msgs, setMsgs] = useState(originalMsgs)
   const [editingId, setEditingId] = useState(null)
