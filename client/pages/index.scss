@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+}
+#__next {
+  margin: 10px;
+}
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  &__input {
+    display: flex;
+    width: 80%;
+    max-width: 700px;
+    min-width: 400px;
+    margin: 0 auto 10px;
+    > * {
+      box-sizing: border-box;
+    }
+    textarea {
+      padding: 10px;
+      flex-grow: 1;
+    }
+    button {
+      margin-left: 5px;
+      width: 60px;
+    }
+  }
+  &__item {
+    position: relative;
+    margin: 10px 0;
+    padding: 15px 15px 5px;
+    border-radius: 5px;
+    border: solid 1px #aaa;
+    h3 {
+      font-size: 0.85em;
+      margin: 0 0 10px;
+    }
+    sub {
+      font-weight: normal;
+      margin-left: 5px;
+      vertical-align: baseline;
+    }
+    p {
+      margin: 10px 0;
+    }
+    &:hover .messages__buttons {
+      display: block;
+    }
+    .messages__input {
+      width: 100%;
+    }
+  }
+  &__buttons {
+    display: none;
+    position: absolute;
+    text-align: right;
+    right: 10px;
+    bottom: 10px;
+  }
+}
