@@ -1,11 +1,16 @@
 [
+  { "id": "443fd88f-b2e3-4567-b6dc-dbac202a8039", "text": "제이입니다.", "userId": "jay", "timestamp": 1623900095989 },
+  { "id": "e363f972-cb4c-4709-85ea-f520b6be26a7", "text": "새글을 쓰면", "userId": "roy", "timestamp": 1623900088968 },
+  {
+    "id": "d719ee57-0395-473c-9f99-1186dd8b1d00",
+    "text": "새글 로이입니다.",
+    "userId": "roy",
+    "timestamp": 1623897535713
+  },
+  { "id": "d2addadd-3538-4740-b510-9551e88c98bc", "text": "새글입니다.", "userId": "jay", "timestamp": 1623897527739 },
   { "id": "50", "userId": "jay", "timestamp": 1234570890123, "text": "50 mock text" },
   { "id": "49", "userId": "jay", "timestamp": 1234570830123, "text": "49 mock text" },
-  { "id": "48", "userId": "roy", "timestamp": 1234570770123, "text": "48 mock text" },
-  { "id": "47", "userId": "roy", "timestamp": 1234570710123, "text": "47 mock text" },
-  { "id": "46", "userId": "roy", "timestamp": 1234570650123, "text": "46 mock text" },
   { "id": "45", "userId": "jay", "timestamp": 1234570590123, "text": "45 mock text" },
-  { "id": "44", "userId": "roy", "timestamp": 1234570530123, "text": "44 mock text" },
   { "id": "43", "userId": "roy", "timestamp": 1234570470123, "text": "43 mock text" },
   { "id": "42", "userId": "jay", "timestamp": 1234570410123, "text": "42 mock text" },
   { "id": "41", "userId": "roy", "timestamp": 1234570350123, "text": "41 mock text" },

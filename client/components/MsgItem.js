@@ -1,9 +1,9 @@
 import MsgInput from './MsgInput'
 
-const MsgItem = ({ id, userId, timestamp, text, onUpdate, onDelete, isEditing, startEdit }) => (
+const MsgItem = ({ id, userId, timestamp, text, onUpdate, onDelete, isEditing, startEdit, myId, user }) => (
   <li className="messages__item">
     <h3>
-      {userId}{' '}
+      {user.nickname}{' '}
       <sub>
         {new Date(timestamp).toLocaleString('ko-KR', {
           year: 'numeric',
@@ -24,10 +24,12 @@ const MsgItem = ({ id, userId, timestamp, text, onUpdate, onDelete, isEditing, s
       text
     )}
 
-    <div className="messages__buttons">
-      <button onClick={startEdit}>수정</button>
-      <button onClick={onDelete}>삭제</button>
-    </div>
+    {myId === userId && (
+      <div className="messages__buttons">
+        <button onClick={startEdit}>수정</button>
+        <button onClick={onDelete}>삭제</button>
+      </div>
+    )}
   </li>
 )
 
