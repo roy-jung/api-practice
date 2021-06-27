@@ -14,12 +14,11 @@
 ## 다루는 내용
 
 - core
-
   - NodeJS
   - express
   - json Database (file system)
 
-- optioanl
+- code base (optional)
   - React.JS
   - Next.JS
   - GrapQL
