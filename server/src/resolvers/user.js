@@ -1,7 +1,7 @@
 const userResolver = {
   Query: {
-    users: (parent, args, { db }) => Object.values(db.users),
-    user: (parent, { id }, { db }) => db.users[id],
+    users: (parent, args, { models }) => Object.values(models.users),
+    user: (parent, { id }, { models }) => models.users[id],
   },
 }
 
