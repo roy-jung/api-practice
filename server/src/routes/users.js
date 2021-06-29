@@ -1,6 +1,10 @@
-import { readDB } from '../dbController.js'
+import db from '../dbController.js'
 
-const getUsers = () => readDB('users')
+const getUsers = () => {
+  db.read()
+  db.data = db.data || { users: {} }
+  return db.data.users
+}
 
 const usersRoute = [
   {
