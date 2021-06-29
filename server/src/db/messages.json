@@ -1,4 +1,10 @@
 [
+  {
+    "id": "e03d1650-8152-465e-9f3e-554004a30cca",
+    "text": "graphql playground에서 작성",
+    "userId": "roy",
+    "timestamp": 1624028421922
+  },
   { "id": "443fd88f-b2e3-4567-b6dc-dbac202a8039", "text": "제이입니다.", "userId": "jay", "timestamp": 1623900095989 },
   { "id": "e363f972-cb4c-4709-85ea-f520b6be26a7", "text": "새글을 쓰면", "userId": "roy", "timestamp": 1623900088968 },
   {
