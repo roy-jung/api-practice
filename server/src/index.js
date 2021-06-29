@@ -1,11 +1,9 @@
-import express from 'express'
+import jsonServer from 'json-server'
 import cors from 'cors'
 import messagesRoute from './routes/messages.js'
-import usersRoute from './routes/users.js'
 
-const app = express()
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+const app = jsonServer.create()
+const router = jsonServer.router('./src/db.json')
 
 app.use(
   cors({
@@ -14,10 +12,14 @@ app.use(
   }),
 )
 
-const routes = [...messagesRoute, ...usersRoute]
+app.use(jsonServer.bodyParser)
+
+const routes = messagesRoute
 routes.forEach(({ method, route, handler }) => {
   app[method](route, handler)
 })
+
+app.use(router)
 
 app.listen(8000, () => {
   console.log('server listening on 8000...')

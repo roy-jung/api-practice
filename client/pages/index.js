@@ -9,7 +9,7 @@ const Home = ({ smsgs, users }) => (
 )
 
 export const getServerSideProps = async () => {
-  const smsgs = await fetcher('get', '/messages')
+  const smsgs = await fetcher('get', '/messages?_start=0&_end=15&_sort=timestamp&_order=desc')
   const users = await fetcher('get', '/users')
   return {
     props: { smsgs, users },

@@ -1,22 +1,10 @@
 {
   "messages": [
     {
-      "id": "d4765f8e-a0c7-42c3-a521-c73a98f3e390",
-      "text": "새 글을 lowdb 서버에 저장",
-      "userId": "roy",
-      "timestamp": 1624417329366
-    },
-    {
       "id": "443fd88f-b2e3-4567-b6dc-dbac202a8039",
       "text": "제이입니다.",
       "userId": "jay",
       "timestamp": 1623900095989
-    },
-    {
-      "id": "e363f972-cb4c-4709-85ea-f520b6be26a7",
-      "text": "새글을 쓰면 수정을 하면",
-      "userId": "roy",
-      "timestamp": 1623900088968
     },
     {
       "id": "d719ee57-0395-473c-9f99-1186dd8b1d00",
@@ -307,14 +295,14 @@
       "text": "1 mock text"
     }
   ],
-  "users": {
-    "roy": {
+  "users": [
+    {
       "id": "roy",
       "nickname": "로이"
     },
-    "jay": {
+    {
       "id": "jay",
       "nickname": "제이"
     }
-  }
+  ]
 }

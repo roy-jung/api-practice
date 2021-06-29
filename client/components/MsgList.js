@@ -35,9 +35,9 @@ const MsgList = ({ smsgs, users }) => {
   }
 
   const onDelete = async id => {
-    const receivedId = await fetcher('delete', `/messages/${id}`, { params: { userId } })
+    await fetcher('delete', `/messages/${id}`, { params: { userId } })
     setMsgs(msgs => {
-      const targetIndex = msgs.findIndex(msg => msg.id === receivedId + '')
+      const targetIndex = msgs.findIndex(msg => msg.id === id)
       if (targetIndex < 0) return msgs
       const newMsgs = [...msgs]
       newMsgs.splice(targetIndex, 1)
@@ -48,7 +48,9 @@ const MsgList = ({ smsgs, users }) => {
   const doneEdit = () => setEditingId(null)
 
   const getMessages = async () => {
-    const newMsgs = await fetcher('get', '/messages', { params: { cursor: msgs[msgs.length - 1]?.id || '' } })
+    const _start = msgs.length
+    const _end = _start + 15
+    const newMsgs = await fetcher('get', '/messages', { params: { _start, _end, _sort: 'timestamp', _order: 'desc' } })
     if (newMsgs.length === 0) {
       setHasNext(false)
       return
@@ -75,7 +77,7 @@ const MsgList = ({ smsgs, users }) => {
             startEdit={() => setEditingId(x.id)}
             isEditing={editingId === x.id}
             myId={userId}
-            user={users[x.userId]}
+            user={users.find(user => user.id === x.userId)}
           />
         ))}
       </ul>
