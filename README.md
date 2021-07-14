@@ -55,11 +55,15 @@
 - express 이용한 서버 및 JSON Database 만들기
 - server routes
 
+[Ch1 -> Ch2](https://github.com/roy-jung/api-practice/pull/9)
+
 ### 3. Client - REST API 통신
 
 - 클라이언트에서 REST API로 데이터 통신하기
 - 무한스크롤 구현하기
 - 서버사이드 렌더링
+
+[Ch2 -> Ch3](https://github.com/roy-jung/api-practice/pull/10)
 
 ### 4. Server - GraphQL
 
@@ -67,17 +71,29 @@
 - resolver 작성
 - GraphQL Playground 소개 및 동작 테스트
 
+[Ch3 -> Ch4](https://github.com/roy-jung/api-practice/pull/11)
+
 ### 5. Client - GraphQL 통신
 
 - GraphQL 환경세팅
 - 클라이언트에서 GraphQL로 데이터 통신하기
+
+[Ch4 -> Ch5](https://github.com/roy-jung/api-practice/pull/12)
 
 ### 6. Client - GraphQL 무한스크롤
 
 - useInfiniteQuery 적용하기
 - 무한스크롤 환경에서 mutation 처리 및 기능 보완
 
+[Ch5 -> Ch6](https://github.com/roy-jung/api-practice/pull/13)
+
 ### 7. 기타
 
 - LowDB
+
+[Ch3 -> LowDB Rest](https://github.com/roy-jung/api-practice/pull/14)
+[Ch6 -> LowDB GraphQL](https://github.com/roy-jung/api-practice/pull/15)
+
 - json-server
+
+[LowDB Rest -> JSON Server](https://github.com/roy-jung/api-practice/pull/16)
