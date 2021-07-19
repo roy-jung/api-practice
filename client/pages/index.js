@@ -1,7 +1,6 @@
 import MsgList from '../components/MsgList'
 import { fetcher } from '../queryClient'
 import { GET_MESSAGES } from '../graphql/message'
-import { GET_USERS } from '../graphql/user'
 
 const Home = ({ smsgs }) => (
   <>
