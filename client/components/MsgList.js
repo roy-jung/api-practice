@@ -9,9 +9,8 @@ import useInfiniteScroll from '../hooks/useInfiniteScroll'
 
 const MsgList = ({ smsgs }) => {
   const client = useQueryClient()
-  const {
-    query: { userId = '' },
-  } = useRouter()
+  const { query } = useRouter()
+  const userId = query.userId || query.userid || ''
   const [msgs, setMsgs] = useState([{ messages: smsgs }])
   const [editingId, setEditingId] = useState(null)
   const fetchMoreEl = useRef(null)
@@ -82,7 +81,7 @@ const MsgList = ({ smsgs }) => {
 
   return (
     <>
-      <MsgInput mutate={onCreate} />
+      {userId && <MsgInput mutate={onCreate} />}
       <ul className="messages">
         {msgs.map(({ messages }, pageIndex) =>
           messages.map(x => (
