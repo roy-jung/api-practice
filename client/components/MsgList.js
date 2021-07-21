@@ -6,9 +6,9 @@ import fetcher from '../fetcher'
 import useInfiniteScroll from '../hooks/useInfiniteScroll'
 
 const MsgList = ({ smsgs, users }) => {
-  const {
-    query: { userId = '' },
-  } = useRouter()
+  const { query } = useRouter()
+  const userId = query.userId || query.userid || ''
+
   const [msgs, setMsgs] = useState(smsgs)
   const [editingId, setEditingId] = useState(null)
   const [hasNext, setHasNext] = useState(true)
@@ -62,11 +62,9 @@ const MsgList = ({ smsgs, users }) => {
     if (intersecting && hasNext) getMessages()
   }, [intersecting])
 
-  console.log({ intersecting, hasNext, msgs })
-
   return (
     <>
-      <MsgInput mutate={onCreate} />
+      {userId && <MsgInput mutate={onCreate} />}
       <ul className="messages">
         {msgs.map(x => (
           <MsgItem
