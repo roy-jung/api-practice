@@ -35,16 +35,21 @@ const messagesRoute = [
     method: 'post',
     route: '/messages',
     handler: ({ body }, res) => {
-      const msgs = getMsgs()
-      const newMsg = {
-        id: v4(),
-        text: body.text,
-        userId: body.userId,
-        timestamp: Date.now(),
+      try {
+        if (!body.userId) throw Error('no userId')
+        const msgs = getMsgs()
+        const newMsg = {
+          id: v4(),
+          text: body.text,
+          userId: body.userId,
+          timestamp: Date.now(),
+        }
+        msgs.unshift(newMsg)
+        setMsgs(msgs)
+        res.send(newMsg)
+      } catch (err) {
+        res.status(500).send({ error: err })
       }
-      msgs.unshift(newMsg)
-      setMsgs(msgs)
-      res.send(newMsg)
     },
   },
   {
