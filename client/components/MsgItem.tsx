@@ -1,6 +1,27 @@
+import { TMutate, IUser } from '../types'
 import MsgInput from './MsgInput'
 
-const MsgItem = ({ id, timestamp, text, onUpdate, onDelete, isEditing, startEdit, myId, user }) => (
+const MsgItem = ({
+  id,
+  timestamp,
+  text,
+  onUpdate,
+  onDelete,
+  isEditing,
+  startEdit,
+  myId,
+  user,
+}: {
+  id: string
+  timestamp: number
+  text: string
+  myId: string
+  user: IUser
+  isEditing: boolean
+  onUpdate: TMutate
+  startEdit: () => void
+  onDelete: () => void
+}) => (
   <li className="messages__item">
     <h3>
       {user.nickname}{' '}

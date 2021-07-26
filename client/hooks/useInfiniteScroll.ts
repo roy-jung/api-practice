@@ -1,7 +1,7 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useEffect, useCallback, MutableRefObject } from 'react'
 
-const useInfiniteScroll = targetEl => {
-  const observerRef = useRef(null)
+const useInfiniteScroll = (targetEl: MutableRefObject<HTMLElement>) => {
+  const observerRef = useRef<IntersectionObserver>()
   const [intersecting, setIntersecting] = useState(false)
 
   const getObserver = useCallback(() => {

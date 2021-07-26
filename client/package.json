@@ -18,6 +18,8 @@
     "sass": "^1.35.2"
   },
   "devDependencies": {
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
     "webpack": "^5.44.0"
   }
 }

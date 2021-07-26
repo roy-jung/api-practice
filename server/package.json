@@ -1,6 +1,5 @@
 {
   "name": "server",
-  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,9 +11,12 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@types/node": "^16.4.3",
+    "@types/uuid": "^8.3.1",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.1.0"
   },
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon --exec 'ts-node ./src/index.ts'"
   }
 }
