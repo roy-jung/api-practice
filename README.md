@@ -95,6 +95,6 @@
 
 ### 8. TypeScript 적용 버전
   - REST: https://github.com/roy-jung/api-practice/tree/ts-ch3
-    - [Ch3 -> TypeScript 비교](https://github.com/roy-jung/api-practice/pull/17)
+    - [Ch3 -> TypeScript 비교](https://github.com/roy-jung/api-practice/pull/17/files)
   - GraphQL: https://github.com/roy-jung/api-practice/tree/ts-ch6
-    - [Ch6 -> TypeScript 비교](https://github.com/roy-jung/api-practice/pull/18)
+    - [Ch6 -> TypeScript 비교](https://github.com/roy-jung/api-practice/pull/18/files)
