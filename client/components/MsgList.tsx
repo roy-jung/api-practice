@@ -3,26 +3,27 @@ import { useRouter } from 'next/router'
 import MsgItem from './MsgItem'
 import MsgInput from './MsgInput'
 import fetcher from '../fetcher'
+import { METHOD, IMessage, IUsers } from '../types'
 import useInfiniteScroll from '../hooks/useInfiniteScroll'
 
-const MsgList = ({ smsgs, users }) => {
+const MsgList = ({ smsgs, users }: { smsgs: IMessage[]; users: IUsers }) => {
   const { query } = useRouter()
-  const userId = query.userId || query.userid || ''
+  const userId = (query.userId || query.userid || '') as string
 
-  const [msgs, setMsgs] = useState(smsgs)
-  const [editingId, setEditingId] = useState(null)
+  const [msgs, setMsgs] = useState<IMessage[]>(smsgs)
+  const [editingId, setEditingId] = useState<string | null>(null)
   const [hasNext, setHasNext] = useState(true)
-  const fetchMoreEl = useRef(null)
+  const fetchMoreEl = useRef<HTMLDivElement>()
   const intersecting = useInfiniteScroll(fetchMoreEl)
 
-  const onCreate = async text => {
-    const newMsg = await fetcher('post', '/messages', { text, userId })
+  const onCreate = async (text: string) => {
+    const newMsg: IMessage = await fetcher(METHOD.POST, '/messages', { text, userId })
     if (!newMsg) throw Error('something wrong')
     setMsgs(msgs => [newMsg, ...msgs])
   }
 
-  const onUpdate = async (text, id) => {
-    const newMsg = await fetcher('put', `/messages/${id}`, { text, userId })
+  const onUpdate = async (text: string, id: string) => {
+    const newMsg: IMessage = await fetcher(METHOD.PUT, `/messages/${id}`, { text, userId })
     if (!newMsg) throw Error('something wrong')
     setMsgs(msgs => {
       const targetIndex = msgs.findIndex(msg => msg.id === id)
@@ -34,8 +35,8 @@ const MsgList = ({ smsgs, users }) => {
     doneEdit()
   }
 
-  const onDelete = async id => {
-    const receivedId = await fetcher('delete', `/messages/${id}`, { params: { userId } })
+  const onDelete = async (id: string) => {
+    const receivedId: string = await fetcher(METHOD.DELETE, `/messages/${id}`, { params: { userId } })
     setMsgs(msgs => {
       const targetIndex = msgs.findIndex(msg => msg.id === receivedId + '')
       if (targetIndex < 0) return msgs
@@ -48,7 +49,9 @@ const MsgList = ({ smsgs, users }) => {
   const doneEdit = () => setEditingId(null)
 
   const getMessages = async () => {
-    const newMsgs = await fetcher('get', '/messages', { params: { cursor: msgs[msgs.length - 1]?.id || '' } })
+    const newMsgs: IMessage[] = await fetcher(METHOD.GET, '/messages', {
+      params: { cursor: msgs[msgs.length - 1]?.id || '' },
+    })
     if (newMsgs.length === 0) {
       setHasNext(false)
       return

@@ -1,5 +1,6 @@
 {
   "watch": ["src"],
+  "ext": "ts,json",
   "ignore": ["db/**/*"],
   "env": {
     "NODE_ENV": "development"

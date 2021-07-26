@@ -1,13 +1,14 @@
 import { v4 } from 'uuid'
-import { readDB, writeDB } from '../dbController.js'
+import { readDB, writeDB } from '../dbController'
+import { DBField, ICustomRoute, IMessage, METHOD } from '../types'
 
-const getMsgs = () => readDB('messages')
-const setMsgs = data => writeDB('messages', data)
+const getMsgs = (): IMessage[] => readDB(DBField.MESSAGES)
+const setMsgs = (data: IMessage[]) => writeDB(DBField.MESSAGES, data)
 
-const messagesRoute = [
+const messagesRoute: ICustomRoute[] = [
   {
     // GET MESSAGES
-    method: 'get',
+    method: METHOD.GET,
     route: '/messages',
     handler: ({ query: { cursor = '' } }, res) => {
       const msgs = getMsgs()
@@ -17,7 +18,7 @@ const messagesRoute = [
   },
   {
     // GET MESSAGE
-    method: 'get',
+    method: METHOD.GET,
     route: '/messages/:id',
     handler: ({ params: { id } }, res) => {
       try {
@@ -32,7 +33,7 @@ const messagesRoute = [
   },
   {
     // CREATE MESSAGE
-    method: 'post',
+    method: METHOD.POST,
     route: '/messages',
     handler: ({ body }, res) => {
       try {
@@ -54,7 +55,7 @@ const messagesRoute = [
   },
   {
     // UPDATE MESSAGE
-    method: 'put',
+    method: METHOD.PUT,
     route: '/messages/:id',
     handler: ({ body, params: { id } }, res) => {
       try {
@@ -74,7 +75,7 @@ const messagesRoute = [
   },
   {
     // DELETE MESSAGE
-    method: 'delete',
+    method: METHOD.DELETE,
     route: '/messages/:id',
     handler: ({ params: { id }, query: { userId } }, res) => {
       try {

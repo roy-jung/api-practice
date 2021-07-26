@@ -10,6 +10,9 @@
     "client",
     "server"
   ],
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
   "scripts": {
     "client": "yarn workspace client start",
     "server": "yarn workspace server start"
