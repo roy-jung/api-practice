@@ -91,3 +91,8 @@
 
 - json-server
   - [[LowDB Rest -> JSON Server 비교]](https://github.com/roy-jung/api-practice/pull/16/files)
+
+
+- TypeScript 적용
+  - REST: [Ch3 -> TypeScript](https://github.com/roy-jung/api-practice/pull/17)
+  - GraphQL: [Ch6 -> TypeScript](https://github.com/roy-jung/api-practice/pull/18)
