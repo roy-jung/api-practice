@@ -6,20 +6,20 @@ import MsgInput from './MsgInput'
 import { QueryKeys, fetcher, findTargetMsgIndex, getNewMessages } from '../queryClient'
 import { GET_MESSAGES, CREATE_MESSAGE, UPDATE_MESSAGE, DELETE_MESSAGE } from '../graphql/message'
 import useInfiniteScroll from '../hooks/useInfiniteScroll'
-import { IMessage, IMsgQueryData } from '../types'
+import { Message, MsgQueryData } from '../types'
 
-const MsgList = ({ smsgs }: { smsgs: IMessage[] }) => {
+const MsgList = ({ smsgs }: { smsgs: Message[] }) => {
   const client = useQueryClient()
   const { query } = useRouter()
   const userId = (query.userId || query.userid || '') as string
   const [msgs, setMsgs] = useState([{ messages: smsgs }])
   const [editingId, setEditingId] = useState<string | null>(null)
-  const fetchMoreEl = useRef<HTMLDivElement>()
+  const fetchMoreEl = useRef<HTMLDivElement>(null)
   const intersecting = useInfiniteScroll(fetchMoreEl)
 
   const { mutate: onCreate } = useMutation(({ text }: { text: string }) => fetcher(CREATE_MESSAGE, { text, userId }), {
     onSuccess: ({ createMessage }) => {
-      client.setQueryData<IMsgQueryData>(QueryKeys.MESSAGES, old => {
+      client.setQueryData<MsgQueryData>(QueryKeys.MESSAGES, old => {
         if (!old) return { pages: [{ messages: [createMessage] }], pageParams: '' }
         return {
           pageParams: old.pageParams,
@@ -34,7 +34,7 @@ const MsgList = ({ smsgs }: { smsgs: IMessage[] }) => {
     {
       onSuccess: ({ updateMessage }) => {
         doneEdit()
-        client.setQueryData<IMsgQueryData>(QueryKeys.MESSAGES, old => {
+        client.setQueryData<MsgQueryData>(QueryKeys.MESSAGES, old => {
           if (!old) return { pages: [{ messages: [] }], pageParams: '' }
 
           const { pageIndex, msgIndex } = findTargetMsgIndex(old.pages, updateMessage.id)
@@ -49,7 +49,7 @@ const MsgList = ({ smsgs }: { smsgs: IMessage[] }) => {
 
   const { mutate: onDelete } = useMutation((id: string) => fetcher(DELETE_MESSAGE, { id, userId }), {
     onSuccess: ({ deleteMessage: deletedId }) => {
-      client.setQueryData<IMsgQueryData>(QueryKeys.MESSAGES, old => {
+      client.setQueryData<MsgQueryData>(QueryKeys.MESSAGES, old => {
         if (!old) return { pages: [{ messages: [] }], pageParams: '' }
         const { pageIndex, msgIndex } = findTargetMsgIndex(old.pages, deletedId)
         if (pageIndex < 0 || msgIndex < 0) return old

@@ -1,6 +1,6 @@
 import { request } from 'graphql-request'
 import { DocumentNode } from 'graphql/language/ast'
-import { IMessage, IMsgQueryData } from './types'
+import { Message, MsgQueryData } from './types'
 
 const URL = 'http://localhost:8000/graphql'
 
@@ -13,7 +13,7 @@ export const QueryKeys = {
   USER: 'USER',
 }
 
-export const findTargetMsgIndex = (pages: { messages: IMessage[] }[], id: string) => {
+export const findTargetMsgIndex = (pages: { messages: Message[] }[], id: string) => {
   let msgIndex = -1
   const pageIndex = pages.findIndex(({ messages }) => {
     msgIndex = messages.findIndex(msg => msg.id === id)
@@ -25,7 +25,7 @@ export const findTargetMsgIndex = (pages: { messages: IMessage[] }[], id: string
   return { pageIndex, msgIndex }
 }
 
-export const getNewMessages = (old: IMsgQueryData) => ({
+export const getNewMessages = (old: MsgQueryData) => ({
   pageParams: old.pageParams,
   pages: old.pages.map(({ messages }) => ({ messages: [...messages] })),
 })

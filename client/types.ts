@@ -1,19 +1,19 @@
-export interface IUser {
+export interface User {
   id: string
   nickname: string
 }
 
-export interface IMessage {
+export interface Message {
   id: string
   userId: string
   timestamp: number
   text: string
-  user: IUser
+  user: User
 }
 
-export type TMutate = ({ text, id }: { text: string; id?: string }) => void
+export type Mutate = ({ text, id }: { text: string; id?: string }) => void
 
-export interface IMsgQueryData {
-  pages: { messages: IMessage[] }[]
+export interface MsgQueryData {
+  pages: { messages: Message[] }[]
   pageParams: string
 }

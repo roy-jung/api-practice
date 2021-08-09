@@ -1,4 +1,4 @@
-import { TMutate, IUser } from '../types'
+import { Mutate, User } from '../types'
 import MsgInput from './MsgInput'
 
 const MsgItem = ({
@@ -16,9 +16,9 @@ const MsgItem = ({
   timestamp: number
   text: string
   myId: string
-  user: IUser
+  user: User
   isEditing: boolean
-  onUpdate: TMutate
+  onUpdate: Mutate
   startEdit: () => void
   onDelete: () => void
 }) => (

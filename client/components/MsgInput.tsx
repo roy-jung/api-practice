@@ -2,7 +2,7 @@ import { FormEvent, useRef } from 'react'
 import { TMutate } from '../types'
 
 const MsgInput = ({ mutate, text = '', id = undefined }: { mutate: TMutate; text?: string; id?: string }) => {
-  const textRef = useRef<HTMLTextAreaElement>()
+  const textRef = useRef<HTMLTextAreaElement>(null)
 
   const onSubmit = (e: FormEvent) => {
     if (!textRef.current) return

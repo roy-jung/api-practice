@@ -1,6 +1,6 @@
-import { IResolver } from '../types'
+import { Resolver } from '../types'
 
-const userResolver: IResolver = {
+const userResolver: Resolver = {
   Query: {
     users: (parent, args, { db }) => Object.values(db.users),
     user: (parent, { id }, { db }) => db.users[id],

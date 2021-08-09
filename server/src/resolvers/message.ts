@@ -1,8 +1,8 @@
 import { v4 } from 'uuid'
 import { writeDB } from '../dbController'
-import { DBField, IMessage, IResolver } from '../types'
+import { DBField, Message, Resolver } from '../types'
 
-const setMsgs = (data: IMessage[]) => writeDB(DBField.MESSAGES, data)
+const setMsgs = (data: Message[]) => writeDB(DBField.MESSAGES, data)
 
 /* 
 parent: parent 객체. 거의 사용X
@@ -10,7 +10,7 @@ args: Query에 필요한 필드에 제공되는 인수(parameter)
 context: 로그인한 사용자. DB Access 등의 중요한 정보들
 */
 
-const messageResolver: IResolver = {
+const messageResolver: Resolver = {
   Query: {
     messages: (parent, { cursor = '' }, { db }) => {
       const fromIndex = db.messages.findIndex(msg => msg.id === cursor) + 1

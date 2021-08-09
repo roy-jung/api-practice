@@ -3,27 +3,27 @@ export enum DBField {
   USERS = 'users',
 }
 
-export interface IMessage {
+export interface Message {
   id: string
   text: string
   userId: string
   timestamp: number
 }
 
-export interface IUser {
+export interface User {
   id: string
   nickname: string
 }
 
-export interface IResolver {
+export interface Resolver {
   [key: string]: {
     [key: string]: (
       parent: any,
       variables: { [key: string]: any },
       context: {
         db: {
-          messages: IMessage[]
-          users: { [key: string]: IUser }
+          messages: Message[]
+          users: { [key: string]: User }
         }
       },
     ) => any
