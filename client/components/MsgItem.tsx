@@ -18,7 +18,7 @@ const MsgItem = ({
   isEditing: boolean
   myId: string
   user: IUser
-  onUpdate: (id: string, text: string) => void
+  onUpdate: (text: string, id?: string) => void
   onDelete: () => void
   startEdit: () => void
 }) => (

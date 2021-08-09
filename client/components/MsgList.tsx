@@ -13,7 +13,7 @@ const MsgList = ({ smsgs, users }: { smsgs: IMessage[]; users: IUsers }) => {
   const [msgs, setMsgs] = useState<IMessage[]>(smsgs)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [hasNext, setHasNext] = useState(true)
-  const fetchMoreEl = useRef<HTMLDivElement>()
+  const fetchMoreEl = useRef<HTMLDivElement>(null)
   const intersecting = useInfiniteScroll(fetchMoreEl)
 
   const onCreate = async (text: string) => {
@@ -22,7 +22,7 @@ const MsgList = ({ smsgs, users }: { smsgs: IMessage[]; users: IUsers }) => {
     setMsgs(msgs => [newMsg, ...msgs])
   }
 
-  const onUpdate = async (text: string, id: string) => {
+  const onUpdate = async (text: string, id?: string) => {
     const newMsg: IMessage = await fetcher(METHOD.PUT, `/messages/${id}`, { text, userId })
     if (!newMsg) throw Error('something wrong')
     setMsgs(msgs => {
