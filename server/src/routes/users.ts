@@ -1,9 +1,9 @@
 import { readDB } from '../dbController'
-import { DBField, ICustomRoute, IUsers, METHOD } from '../types'
+import { DBField, CustomRoute, Users, METHOD } from '../types'
 
-const getUsers = (): IUsers => readDB(DBField.USERS)
+const getUsers = (): Users => readDB(DBField.USERS)
 
-const usersRoute: ICustomRoute[] = [
+const usersRoute: CustomRoute[] = [
   {
     method: METHOD.GET,
     route: '/users',

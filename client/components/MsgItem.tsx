@@ -1,4 +1,4 @@
-import { IUser } from '../types'
+import { User } from '../types'
 import MsgInput from './MsgInput'
 
 const MsgItem = ({
@@ -17,7 +17,7 @@ const MsgItem = ({
   text: string
   isEditing: boolean
   myId: string
-  user: IUser
+  user: User
   onUpdate: (text: string, id?: string) => void
   onDelete: () => void
   startEdit: () => void

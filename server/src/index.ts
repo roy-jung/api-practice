@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import messagesRoute from './routes/messages'
 import usersRoute from './routes/users'
-import { ICustomRoute } from './types'
+import { CustomRoute } from './types'
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))
@@ -15,7 +15,7 @@ app.use(
   }),
 )
 
-const routes: ICustomRoute[] = [...messagesRoute, ...usersRoute]
+const routes: CustomRoute[] = [...messagesRoute, ...usersRoute]
 routes.forEach(({ method, route, handler }) => {
   app[method](route, handler)
 })

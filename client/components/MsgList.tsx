@@ -3,27 +3,27 @@ import { useRouter } from 'next/router'
 import MsgItem from './MsgItem'
 import MsgInput from './MsgInput'
 import fetcher from '../fetcher'
-import { METHOD, IMessage, IUsers } from '../types'
+import { METHOD, Message, Users } from '../types'
 import useInfiniteScroll from '../hooks/useInfiniteScroll'
 
-const MsgList = ({ smsgs, users }: { smsgs: IMessage[]; users: IUsers }) => {
+const MsgList = ({ smsgs, users }: { smsgs: Message[]; users: Users }) => {
   const { query } = useRouter()
   const userId = (query.userId || query.userid || '') as string
 
-  const [msgs, setMsgs] = useState<IMessage[]>(smsgs)
+  const [msgs, setMsgs] = useState<Message[]>(smsgs)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [hasNext, setHasNext] = useState(true)
   const fetchMoreEl = useRef<HTMLDivElement>(null)
   const intersecting = useInfiniteScroll(fetchMoreEl)
 
   const onCreate = async (text: string) => {
-    const newMsg: IMessage = await fetcher(METHOD.POST, '/messages', { text, userId })
+    const newMsg: Message = await fetcher(METHOD.POST, '/messages', { text, userId })
     if (!newMsg) throw Error('something wrong')
     setMsgs(msgs => [newMsg, ...msgs])
   }
 
   const onUpdate = async (text: string, id?: string) => {
-    const newMsg: IMessage = await fetcher(METHOD.PUT, `/messages/${id}`, { text, userId })
+    const newMsg: Message = await fetcher(METHOD.PUT, `/messages/${id}`, { text, userId })
     if (!newMsg) throw Error('something wrong')
     setMsgs(msgs => {
       const targetIndex = msgs.findIndex(msg => msg.id === id)
@@ -49,7 +49,7 @@ const MsgList = ({ smsgs, users }: { smsgs: IMessage[]; users: IUsers }) => {
   const doneEdit = () => setEditingId(null)
 
   const getMessages = async () => {
-    const newMsgs: IMessage[] = await fetcher(METHOD.GET, '/messages', {
+    const newMsgs: Message[] = await fetcher(METHOD.GET, '/messages', {
       params: { cursor: msgs[msgs.length - 1]?.id || '' },
     })
     if (newMsgs.length === 0) {

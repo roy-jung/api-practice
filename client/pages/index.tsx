@@ -1,8 +1,8 @@
 import MsgList from '../components/MsgList'
 import fetcher from '../fetcher'
-import { IMessage, IUsers, METHOD } from '../types'
+import { Message, Users, METHOD } from '../types'
 
-const Home = ({ smsgs, users }: { smsgs: IMessage[]; users: IUsers }) => (
+const Home = ({ smsgs, users }: { smsgs: Message[]; users: Users }) => (
   <>
     <h1>SIMPLE SNS</h1>
     <MsgList smsgs={smsgs} users={users} />

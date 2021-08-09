@@ -1,11 +1,11 @@
 import { v4 } from 'uuid'
 import { readDB, writeDB } from '../dbController'
-import { DBField, ICustomRoute, IMessage, METHOD } from '../types'
+import { DBField, CustomRoute, Message, METHOD } from '../types'
 
-const getMsgs = (): IMessage[] => readDB(DBField.MESSAGES)
-const setMsgs = (data: IMessage[]) => writeDB(DBField.MESSAGES, data)
+const getMsgs = (): Message[] => readDB(DBField.MESSAGES)
+const setMsgs = (data: Message[]) => writeDB(DBField.MESSAGES, data)
 
-const messagesRoute: ICustomRoute[] = [
+const messagesRoute: CustomRoute[] = [
   {
     // GET MESSAGES
     method: METHOD.GET,

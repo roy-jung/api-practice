@@ -12,24 +12,24 @@ export enum METHOD {
   DELETE = 'delete',
 }
 
-export interface ICustomRoute {
+export interface CustomRoute {
   method: METHOD
   route: string
   handler: (req: express.Request, res: express.Response) => void
 }
 
-export interface IMessage {
+export interface Message {
   id: string
   text: string
   userId: string
   timestamp: number
 }
 
-export interface IUser {
+export interface User {
   id: string
   nickname: string
 }
 
-export interface IUsers {
-  [key: string]: IUser
+export interface Users {
+  [key: string]: User
 }

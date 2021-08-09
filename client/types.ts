@@ -5,18 +5,18 @@ export enum METHOD {
   DELETE = 'delete',
 }
 
-export interface IMessage {
+export interface Message {
   id: string
   userId: string
   timestamp: number
   text: string
 }
 
-export interface IUser {
+export interface User {
   id: string
   nickname: string
 }
 
-export interface IUsers {
-  [key: string]: IUser
+export interface Users {
+  [key: string]: User
 }
