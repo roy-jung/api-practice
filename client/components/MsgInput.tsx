@@ -1,7 +1,7 @@
 import { FormEvent, useRef } from 'react'
-import { TMutate } from '../types'
+import { Mutate } from '../types'
 
-const MsgInput = ({ mutate, text = '', id = undefined }: { mutate: TMutate; text?: string; id?: string }) => {
+const MsgInput = ({ mutate, text = '', id = undefined }: { mutate: Mutate; text?: string; id?: string }) => {
   const textRef = useRef<HTMLTextAreaElement>(null)
 
   const onSubmit = (e: FormEvent) => {
